@@ -10,17 +10,17 @@ namespace BarcodeReaderPicker.Adaptor
     /// <summary>
     /// https://www.dynamsoft.com/barcode-reader/overview/
     /// </summary>
-    public class DynamsoftBarcodeReader6 : IBarcodeReaderPlugin
+    public class DynamsoftBarcodeReader6 : IPlugin
     {
         public string Name => "DynamsoftBarcodeReader6";
 
         public string Description => "Dynamsoft Barcode Reader SDK plugin.";
 
-        private string license = string.Empty;
+        private readonly Configuration _config;
 
-        public void SetLicense(string license)
+        public DynamsoftBarcodeReader6(Configuration config)
         {
-            this.license = license;
+            _config = config;
         }
 
         public string[] Execute(string targetFilePath)
@@ -33,7 +33,7 @@ namespace BarcodeReaderPicker.Adaptor
 
             BarcodeReader barcodeReader = new BarcodeReader
             {
-                LicenseKeys = license
+                LicenseKeys = _config.License
             };
 
             Bitmap bitmap = new Bitmap(targetFilePath);

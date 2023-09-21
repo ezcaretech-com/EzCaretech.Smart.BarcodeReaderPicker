@@ -1,9 +1,10 @@
 ﻿<Window x:Class="BarcodeReaderPicker.TestApplication.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:BarcodeReaderPicker.TestApplication" mc:Ignorable="d" Title="MainWindow" Height="550" Width="800">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarcodeReaderPicker.TestApplication"
+        mc:Ignorable="d" Title="MainWindow" Height="550" Width="1100">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="260">
@@ -13,28 +14,26 @@
                 <Button Content="Read with DynamsoftBarcodeReader6" Click="Dynamsoft6ReadBtn_Click"/>
                 <Button Content="Read with DynamsoftBarcodeReader7" Click="Dynamsoft7ReadBtn_Click"/>
                 <Button Content="Read with IronBarode" Click="IronBarcodeReadBtn_Click"/>
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="10" VerticalAlignment="Top" MinWidth="240">
-                    <Image x:Name="BarcodeImage" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
-                </Border>
+                <Button Content="Read with ZXingBarcodeReader" Click="ZXingBarcodeReadBtn_Click"/>
+                <ComboBox x:Name="BarcodeTypeCbo" />
+                <DockPanel>
+                    <Label DockPanel.Dock="Left" Content="License :"/>
+                    <TextBox x:Name="LicenseText" Margin="4" />
+                </DockPanel>
             </StackPanel>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0">
-                    License :
-                </Label>
-                <TextBox Grid.Row="0" Grid.Column="1" x:Name="LicenseText" />
-                <Label Grid.Row="1" Grid.Column="0">
-                    Result :
-                </Label>
-                <TextBox Grid.Row="1" Grid.Column="1" x:Name="BarcodeData" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="480" MinHeight="310" />
-            </Grid>
+            <StackPanel>
+                <Label Margin="4" Content="Result :"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" Margin="4" VerticalAlignment="Top" Width="310">
+                        <Image x:Name="BarcodeImage" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both" />
+                    </Border>
+                    <TextBox Grid.Column="1" x:Name="BarcodeData" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4" MinWidth="480" MinHeight="310" />
+                </Grid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

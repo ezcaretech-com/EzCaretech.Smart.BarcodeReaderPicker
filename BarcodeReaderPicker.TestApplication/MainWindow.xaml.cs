@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -16,20 +17,34 @@ namespace BarcodeReaderPicker.TestApplication
             InitializeComponent();
 
             LoadPlugins();
+            LoadDefaults();
         }
 
         private void LoadPlugins()
         {
             try
             {
-                BarcodeReaderLoader loader = new BarcodeReaderLoader();
-                loader.LoadPlugins(".");
+                Loader loader = new Loader();
+                loader.LoadPluginAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("Plugins couldn't be loaded: {0}", ex.Message));
                 Environment.Exit(0);
             }
+        }
+
+        private void LoadDefaults()
+        {
+            List<string> barcodeTypes = new List<string>();
+
+            foreach (EncodingFormat type in Enum.GetValues(typeof(EncodingFormat)))
+            {
+                barcodeTypes.Add(type.ToString());
+            }
+
+            BarcodeTypeCbo.ItemsSource = barcodeTypes;
+            BarcodeTypeCbo.SelectedIndex = 0;
         }
 
         private string OpenFile()
@@ -64,7 +79,13 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("EzBarcodeReader");
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("EzBarcodeReader", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
@@ -87,7 +108,13 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("BarcodeLibReader");
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("BarcodeLibReader", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
@@ -110,7 +137,13 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("DynamsoftBarcodeReader5", LicenseText.Text);
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader5", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
@@ -133,7 +166,13 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("DynamsoftBarcodeReader6", LicenseText.Text);
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader6", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
@@ -156,7 +195,13 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("DynamsoftBarcodeReader7", LicenseText.Text);
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader7", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
@@ -179,7 +224,42 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin("IronBarcodeReader", LicenseText.Text);
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("IronBarcodeReader", config);
+
+                string[] results = plugin.Execute(imageFilePath);
+
+                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
+
+                SetResults(results);
+            }
+            catch (Exception ex)
+            {
+                SetResults(new string[] { $"Caught exception: {ex.Message}" });
+            }
+        }
+
+        private void ZXingBarcodeReadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string imageFilePath = OpenFile();
+
+                if (string.IsNullOrEmpty(imageFilePath))
+                    return;
+
+                Configuration config = new Configuration
+                {
+                    License = LicenseText.Text,
+                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                };
+
+                IPlugin plugin = Loader.GetPlugin("ZXingBarcodeReader", config);
 
                 string[] results = plugin.Execute(imageFilePath);
 
