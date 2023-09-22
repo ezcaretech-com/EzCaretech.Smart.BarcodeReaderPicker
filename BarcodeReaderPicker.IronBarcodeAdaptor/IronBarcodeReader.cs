@@ -74,9 +74,9 @@ namespace BarcodeReaderPicker.Adaptor
                 }
             }
 
-            BarcodeResult result = BarcodeReader.QuicklyReadOneBarcode(targetFilePath, barcodeEncoding, false);
+            BarcodeResults result = BarcodeReader.Read(targetFilePath);
 
-            return new string[] { result?.Text };
+            return result.Values();
         }
     }
 }
