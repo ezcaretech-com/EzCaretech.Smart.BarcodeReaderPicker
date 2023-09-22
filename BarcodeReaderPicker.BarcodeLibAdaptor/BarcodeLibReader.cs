@@ -32,12 +32,12 @@
             Dictionary<EncodingFormat, int> barcodeTypeMap = new Dictionary<EncodingFormat, int>
             {
                 { EncodingFormat.Codabar, BarcodeReader.CODABAR },
-                { EncodingFormat.Code25Interleaved, BarcodeReader.INTERLEAVED25 },
                 { EncodingFormat.Code39, BarcodeReader.CODE39 },
                 { EncodingFormat.Code39Extended, BarcodeReader.CODE39EX },
                 { EncodingFormat.Code128, BarcodeReader.CODE128 },
                 { EncodingFormat.EAN8, BarcodeReader.EAN8 },
                 { EncodingFormat.EAN13, BarcodeReader.EAN13 },
+                { EncodingFormat.ITF, BarcodeReader.INTERLEAVED25 },
                 { EncodingFormat.UPCA, BarcodeReader.UPCA },
                 { EncodingFormat.UPCE, BarcodeReader.UPCE },
                 { EncodingFormat.PDF417, BarcodeReader.PDF417 },
