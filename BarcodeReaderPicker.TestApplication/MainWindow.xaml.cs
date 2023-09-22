@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace BarcodeReaderPicker.TestApplication
@@ -70,7 +71,7 @@ namespace BarcodeReaderPicker.TestApplication
             BarcodeData.Text = sb.ToString();
         }
 
-        private void EzBarcodeReadBtn_Click(object sender, RoutedEventArgs e)
+        private void BarcodeReadBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -79,193 +80,22 @@ namespace BarcodeReaderPicker.TestApplication
                 if (string.IsNullOrEmpty(imageFilePath))
                     return;
 
-                Configuration config = new Configuration
+                if (sender is Button button)
                 {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
+                    Configuration config = new Configuration
+                    {
+                        License = LicenseText.Text,
+                        Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
+                    };
 
-                IPlugin plugin = Loader.GetPlugin("EzBarcodeReader", config);
+                    IPlugin plugin = Loader.GetPlugin(button.Tag.ToString(), config);
 
-                string[] results = plugin.Execute(imageFilePath);
+                    string[] results = plugin.Execute(imageFilePath);
 
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
+                    BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
 
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void BarcodeLibReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("BarcodeLibReader", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void Dynamsoft5ReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader5", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void Dynamsoft6ReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader6", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void Dynamsoft7ReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("DynamsoftBarcodeReader7", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void IronBarcodeReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("IronBarcodeReader", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
-            }
-            catch (Exception ex)
-            {
-                SetResults(new string[] { $"Caught exception: {ex.Message}" });
-            }
-        }
-
-        private void ZXingBarcodeReadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string imageFilePath = OpenFile();
-
-                if (string.IsNullOrEmpty(imageFilePath))
-                    return;
-
-                Configuration config = new Configuration
-                {
-                    License = LicenseText.Text,
-                    Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
-                };
-
-                IPlugin plugin = Loader.GetPlugin("ZXingBarcodeReader", config);
-
-                string[] results = plugin.Execute(imageFilePath);
-
-                BarcodeImage.Source = new BitmapImage(new Uri(imageFilePath));
-
-                SetResults(results);
+                    SetResults(results);
+                }
             }
             catch (Exception ex)
             {

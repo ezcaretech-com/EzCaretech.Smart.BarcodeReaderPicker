@@ -8,15 +8,16 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="260">
-                <Button Content="Read with ezBarcode" Click="EzBarcodeReadBtn_Click"/>
-                <Button Content="Read with BarcodeLib" Click="BarcodeLibReadBtn_Click"/>
-                <Button Content="Read with DynamsoftBarcodeReader5" Click="Dynamsoft5ReadBtn_Click"/>
-                <Button Content="Read with DynamsoftBarcodeReader6" Click="Dynamsoft6ReadBtn_Click"/>
-                <Button Content="Read with DynamsoftBarcodeReader7" Click="Dynamsoft7ReadBtn_Click"/>
-                <Button Content="Read with IronBarode" Click="IronBarcodeReadBtn_Click"/>
-                <Button Content="Read with ZXingBarcodeReader" Click="ZXingBarcodeReadBtn_Click"/>
-                <ComboBox x:Name="BarcodeTypeCbo" />
-                <DockPanel>
+                <Button Margin="2" Content="Read with ezBarcode" Tag="EzBarcodeReader" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with BarcodeLib" Tag="BarcodeLibReader" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with DynamsoftBarcodeReader5" Tag="DynamsoftBarcodeReader5" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with DynamsoftBarcodeReader6" Tag="DynamsoftBarcodeReader6" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with DynamsoftBarcodeReader7" Tag="DynamsoftBarcodeReader7" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with IronBarode" Tag="IronBarcodeReader" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with OnBarcodeReader" Tag="OnBarcodeReader" Click="BarcodeReadBtn_Click"/>
+                <Button Margin="2" Content="Read with ZXingBarcodeReader" Tag="ZXingBarcodeReader" Click="BarcodeReadBtn_Click"/>
+                <ComboBox Margin="2" x:Name="BarcodeTypeCbo" />
+                <DockPanel Margin="2">
                     <Label DockPanel.Dock="Left" Content="License :"/>
                     <TextBox x:Name="LicenseText" Margin="4" />
                 </DockPanel>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeReaderPicker.TestApp
 	ProjectSection(ProjectDependencies) = postProject
 		{08332BEE-A61D-4BF1-AFA8-D1A00AB192FC} = {08332BEE-A61D-4BF1-AFA8-D1A00AB192FC}
 		{10224167-54FA-4BE7-A1D1-8C6987E7C544} = {10224167-54FA-4BE7-A1D1-8C6987E7C544}
+		{4D8FB322-DEBB-48F5-9373-B4CF8625115E} = {4D8FB322-DEBB-48F5-9373-B4CF8625115E}
+		{889C3EDB-7F26-4B9D-885A-B6C59B84D5C2} = {889C3EDB-7F26-4B9D-885A-B6C59B84D5C2}
 		{BA9615DA-C350-4BA9-B74F-DEFB14344041} = {BA9615DA-C350-4BA9-B74F-DEFB14344041}
 	EndProjectSection
 EndProject
@@ -25,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeReaderPicker.IronBarcodeAdaptor", "BarcodeReaderPicker.IronBarcodeAdaptor\BarcodeReaderPicker.IronBarcodeAdaptor.csproj", "{BA9615DA-C350-4BA9-B74F-DEFB14344041}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeReaderPicker.ZXingAdaptor", "BarcodeReaderPicker.ZXingAdaptor\BarcodeReaderPicker.ZXingAdaptor.csproj", "{889C3EDB-7F26-4B9D-885A-B6C59B84D5C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeReaderPicker.OnBarcodeAdaptor", "BarcodeReaderPicker.OnBarcodeAdaptor\BarcodeReaderPicker.OnBarcodeAdaptor.csproj", "{4D8FB322-DEBB-48F5-9373-B4CF8625115E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +72,10 @@ Global
 		{889C3EDB-7F26-4B9D-885A-B6C59B84D5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{889C3EDB-7F26-4B9D-885A-B6C59B84D5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{889C3EDB-7F26-4B9D-885A-B6C59B84D5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8FB322-DEBB-48F5-9373-B4CF8625115E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8FB322-DEBB-48F5-9373-B4CF8625115E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8FB322-DEBB-48F5-9373-B4CF8625115E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8FB322-DEBB-48F5-9373-B4CF8625115E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
