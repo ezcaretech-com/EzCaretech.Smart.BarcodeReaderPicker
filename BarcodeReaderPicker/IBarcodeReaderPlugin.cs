@@ -1,6 +1,6 @@
 ﻿namespace BarcodeReaderPicker
 {
-    public interface IPlugin
+    public interface IBarcodeReaderPlugin
     {
         string Name { get; }
 

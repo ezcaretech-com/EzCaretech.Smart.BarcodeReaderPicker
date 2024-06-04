@@ -9,7 +9,7 @@ namespace BarcodeReaderPicker.Adaptor
     /// <summary>
     /// https://github.com/micjahn/ZXing.Net/
     /// </summary>
-    public class ZXingBarcodeReader : IPlugin
+    public class ZXingBarcodeReader : IBarcodeReaderPlugin
     {
         public string Name => "ZXingBarcodeReader";
 

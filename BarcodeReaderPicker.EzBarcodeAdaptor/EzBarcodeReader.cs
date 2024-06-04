@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BarcodeReaderPicker.Adaptor
 {
-    public class EzBarcodeReader : IPlugin
+    public class EzBarcodeReader : IBarcodeReaderPlugin
     {
         public string Name => "EzBarcodeReader";
 

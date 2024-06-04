@@ -12,7 +12,7 @@ namespace BarcodeReaderPicker
 
         public static List<string> PlugIns => plugIns.Select(x => x.Name).ToList();
 
-        public static IPlugin GetPlugin(string name, Configuration config)
+        public static IBarcodeReaderPlugin GetPlugin(string name, Configuration config)
         {
             if (config == null)
             {
@@ -21,7 +21,7 @@ namespace BarcodeReaderPicker
 
             Type plugInType = plugIns.FirstOrDefault(type => type.Name == name);
 
-            IPlugin plugin = (IPlugin)Activator.CreateInstance(
+            IBarcodeReaderPlugin plugin = (IBarcodeReaderPlugin)Activator.CreateInstance(
                 plugInType ?? throw new Exception($"No plugin found with name '{name}'"), config);
 
             return plugin;
@@ -40,7 +40,7 @@ namespace BarcodeReaderPicker
                 fileName =>
                 Assembly.LoadFile(Path.GetFullPath(fileName)))
             .SelectMany(assembly => assembly.GetTypes())
-            .Where(p => typeof(IPlugin).IsAssignableFrom(p) && p.IsClass)
+            .Where(p => typeof(IBarcodeReaderPlugin).IsAssignableFrom(p) && p.IsClass)
             .Where(type => !plugIns.Contains(type))
             .ToList()
             .ForEach(type => plugIns.Add(type));

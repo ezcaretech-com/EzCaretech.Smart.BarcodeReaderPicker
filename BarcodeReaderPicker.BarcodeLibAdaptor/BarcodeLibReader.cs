@@ -8,7 +8,7 @@
     /// <summary>
     /// http://www.barcodelib.com/net_barcode_reader/main.html
     /// </summary>
-    public class BarcodeLibReader : IPlugin
+    public class BarcodeLibReader : IBarcodeReaderPlugin
     {
         public string Name => "BarcodeLibReader";
 

@@ -10,7 +10,7 @@ namespace BarcodeReaderPicker.Adaptor
     /// <summary>
     /// https://www.dynamsoft.com/barcode-reader/overview/
     /// </summary>
-    public class DynamsoftBarcodeReader6 : IPlugin
+    public class DynamsoftBarcodeReader6 : IBarcodeReaderPlugin
     {
         public string Name => "DynamsoftBarcodeReader6";
 

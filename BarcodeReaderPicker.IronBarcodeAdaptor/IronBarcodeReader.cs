@@ -10,7 +10,7 @@ namespace BarcodeReaderPicker.Adaptor
     /// <summary>
     /// https://ironsoftware.com/csharp/barcode/
     /// </summary>
-    public class IronBarcodeReader : IPlugin
+    public class IronBarcodeReader : IBarcodeReaderPlugin
     {
         public string Name => "IronBarcodeReader";
 

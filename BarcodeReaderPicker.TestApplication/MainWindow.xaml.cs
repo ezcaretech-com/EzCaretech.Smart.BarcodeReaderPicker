@@ -88,7 +88,7 @@ namespace BarcodeReaderPicker.TestApplication
                         Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
                     };
 
-                    IPlugin plugin = Loader.GetPlugin(button.Tag.ToString(), config);
+                    IBarcodeReaderPlugin plugin = Loader.GetPlugin(button.Tag.ToString(), config);
 
                     string[] results = plugin.Execute(imageFilePath);
 
