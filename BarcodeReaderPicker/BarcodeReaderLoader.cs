@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace BarcodeReaderPicker
 {
-    public class Loader
+    public class BarcodeReaderLoader
     {
         private static List<Type> plugIns = new List<Type>();
 

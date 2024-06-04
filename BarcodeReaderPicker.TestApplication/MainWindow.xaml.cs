@@ -25,7 +25,7 @@ namespace BarcodeReaderPicker.TestApplication
         {
             try
             {
-                Loader loader = new Loader();
+                BarcodeReaderLoader loader = new BarcodeReaderLoader();
                 loader.LoadPluginAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             }
             catch (Exception ex)
@@ -88,7 +88,7 @@ namespace BarcodeReaderPicker.TestApplication
                         Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),
                     };
 
-                    IBarcodeReaderPlugin plugin = Loader.GetPlugin(button.Tag.ToString(), config);
+                    IBarcodeReaderPlugin plugin = BarcodeReaderLoader.GetPlugin(button.Tag.ToString(), config);
 
                     string[] results = plugin.Execute(imageFilePath);
 

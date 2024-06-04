@@ -43,7 +43,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="EncodingFormat.cs" />
     <Compile Include="IBarcodeReaderPlugin.cs" />
-    <Compile Include="Loader.cs" />
+    <Compile Include="BarcodeReaderLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
