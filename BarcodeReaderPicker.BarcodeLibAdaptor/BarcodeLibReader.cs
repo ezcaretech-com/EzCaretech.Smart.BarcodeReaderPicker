@@ -14,9 +14,9 @@
 
         public string Description => ".NET Barcode Reader SDK plugin.";
 
-        private readonly Configuration _config;
+        private readonly BarcodeReaderConfig _config;
 
-        public BarcodeLibReader(Configuration config)
+        public BarcodeLibReader(BarcodeReaderConfig config)
         {
             _config = config;
         }

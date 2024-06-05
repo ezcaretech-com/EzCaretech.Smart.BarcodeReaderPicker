@@ -16,9 +16,9 @@ namespace BarcodeReaderPicker.Adaptor
 
         public string Description => "Dynamsoft Barcode Reader SDK plugin.";
 
-        private readonly Configuration _config;
+        private readonly BarcodeReaderConfig _config;
 
-        public DynamsoftBarcodeReader6(Configuration config)
+        public DynamsoftBarcodeReader6(BarcodeReaderConfig config)
         {
             _config = config;
         }

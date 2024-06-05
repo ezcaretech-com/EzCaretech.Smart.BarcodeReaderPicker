@@ -82,7 +82,7 @@ namespace BarcodeReaderPicker.TestApplication
 
                 if (sender is Button button)
                 {
-                    Configuration config = new Configuration
+                    BarcodeReaderConfig config = new BarcodeReaderConfig
                     {
                         License = LicenseText.Text,
                         Format = (EncodingFormat)Enum.Parse(typeof(EncodingFormat), BarcodeTypeCbo.SelectedValue.ToString()),

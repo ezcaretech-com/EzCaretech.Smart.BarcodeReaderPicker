@@ -12,7 +12,7 @@ namespace BarcodeReaderPicker
 
         public static List<string> PlugIns => plugIns.Select(x => x.Name).ToList();
 
-        public static IBarcodeReaderPlugin GetPlugin(string name, Configuration config)
+        public static IBarcodeReaderPlugin GetPlugin(string name, BarcodeReaderConfig config)
         {
             if (config == null)
             {

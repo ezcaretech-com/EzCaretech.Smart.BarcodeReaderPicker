@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="BarcodeReaderConfig.cs" />
     <Compile Include="EncodingFormat.cs" />
     <Compile Include="IBarcodeReaderPlugin.cs" />
     <Compile Include="BarcodeReaderLoader.cs" />

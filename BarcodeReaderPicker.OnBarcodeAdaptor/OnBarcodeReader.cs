@@ -11,9 +11,9 @@ namespace BarcodeReaderPicker.Adaptor
 
         public string Description => "IonBarCode for .NET SDK plugin.";
 
-        private readonly Configuration _config;
+        private readonly BarcodeReaderConfig _config;
 
-        public OnBarcodeReader(Configuration config)
+        public OnBarcodeReader(BarcodeReaderConfig config)
         {
             _config = config;
         }

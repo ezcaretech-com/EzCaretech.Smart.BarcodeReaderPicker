@@ -1,6 +1,6 @@
 ﻿namespace BarcodeReaderPicker
 {
-    public class Configuration
+    public class BarcodeReaderConfig
     {
         public string License { get; set; }
 

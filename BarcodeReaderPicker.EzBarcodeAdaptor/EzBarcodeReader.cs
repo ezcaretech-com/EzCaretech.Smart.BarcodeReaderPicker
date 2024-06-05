@@ -12,9 +12,9 @@ namespace BarcodeReaderPicker.Adaptor
 
         public string Description => "EzBarcode Reader plugin.";
 
-        private readonly Configuration _config;
+        private readonly BarcodeReaderConfig _config;
 
-        public EzBarcodeReader(Configuration config)
+        public EzBarcodeReader(BarcodeReaderConfig config)
         {
             _config = config;
         }
